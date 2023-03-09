@@ -1,0 +1,32 @@
+.main-div{
+    /* margin-top: 80px;
+    margin-left: 400px;
+    align-items: center;
+    height: 300px;
+    text-align: center;
+    width: 40%;
+    background-color:rgb(186, 204, 239);
+    border-style: double; */
+
+    max-width: 300px;
+    min-width: 200px;
+    max-height: 400px;
+    width: 30%;
+    height: 70%;
+    margin: 100px auto;
+    text-align: center;
+    background-color: #fffff9;
+    border-radius: 25px;
+  }
+  body{
+    background: rgb(34,193,195);
+    background: linear-gradient(135deg, rgb(172, 239, 191) 0%,     rgb(243, 221, 174) 100%);
+    font-family: "work sans";
+  }
+  .submit-button{
+    background: rgb(34,193,195);
+    background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+  }
+
+
+  
