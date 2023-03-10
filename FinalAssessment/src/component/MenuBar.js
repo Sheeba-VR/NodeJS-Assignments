@@ -22,6 +22,7 @@ export default function PermanentDrawerLeft() {
     const navigate=useNavigate();
 
     const findindex=(index)=>{
+        if(index===0){navigate("/Product")}
         if(index===2){navigate("/DashBoard")}
         if(index===5){navigate("/")}
         }

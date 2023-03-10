@@ -12,7 +12,13 @@ const validationSchema = yup.object({
    password: yup
     .string("Enter your password")
     .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),});
+    .required("Password is required"),
+    confirmpassword: yup
+    .string("Enter confirm password")
+    .min(8, "Password should be of minimum 8 characters length")
+    .required("Password is required"),
+  
+  });
     
     
 function SetPassword() {
@@ -23,6 +29,7 @@ function SetPassword() {
     initialValues: {
       username: "",
       password: "",
+      confirmpassword:"",
     },
     validationSchema: validationSchema,
      onSubmit: (values) => {
@@ -80,7 +87,7 @@ function SetPassword() {
       
 </div>
 <br></br><br></br>
-<Button className="save-button">
+<Button className="save-button" type="submit" variant="contained">
 Save
 </Button>
 
