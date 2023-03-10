@@ -19,8 +19,8 @@
     border-radius: 25px;
   }
   body{
-    background: rgb(34,193,195);
-    background: linear-gradient(135deg, rgb(172, 239, 191) 0%,     rgb(243, 221, 174) 100%);
+    background: rgb(96, 179, 239);
+   /* background: linear-gradient(135deg, rgb(172, 239, 191) 0%,     rgb(243, 221, 174) 100%);*/
     font-family: "work sans";
   }
   .submit-button{
