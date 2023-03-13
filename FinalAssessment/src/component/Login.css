@@ -10,17 +10,17 @@
 
     max-width: 300px;
     min-width: 200px;
-    max-height: 400px;
+    height: 350px;
     width: 30%;
-    height: 70%;
+    
     margin: 100px auto;
     text-align: center;
     background-color: #fffff9;
     border-radius: 25px;
   }
   body{
-    background: rgb(34,193,195);
-    background: linear-gradient(135deg, rgb(172, 239, 191) 0%,     rgb(243, 221, 174) 100%);
+    background: rgb(145, 186, 243);
+    /* background: linear-gradient(135deg, rgb(136, 183, 244) 0%,     rgb(243, 221, 174) 100%); */
     font-family: "work sans";
   }
   .submit-button{

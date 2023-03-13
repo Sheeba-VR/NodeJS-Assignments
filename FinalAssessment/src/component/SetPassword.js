@@ -7,20 +7,35 @@ import {Button,Link} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { Password } from '@mui/icons-material';
 const validationSchema = yup.object({
    username: yup.string("Enter your username").required("UserName is required"),
    password: yup
     .string("Enter your password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+    .required("Password is required")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase and One Number"),    
+    
     confirmpassword: yup
     .string("Enter confirm password")
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
-  
+    .required("Password is required")
+    .oneOf([yup.ref("password"), null], "password must match")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase and One Number"),    
+    
   });
     
-    
+  // const comparision=(val1,val2)=>{
+  //   if (val1===val2)
+  //     return true;
+  //   else
+  //     return false;
+
+  // }  
+
+  
 function SetPassword() {
 
 
@@ -41,8 +56,8 @@ function SetPassword() {
   return (
     <div className="setpassword-div">
         <form onSubmit={formik.handleSubmit} >
-    <h1 style={{fontFamily:"-moz-initial",color:"rgb(220, 89, 23)"}}>Set Password</h1>
-<div style={{marginLeft:"50px",backgroundColor:"rgb(183, 242, 193)",width:"300px",height:"65px"}}>
+    <h1 style={{fontFamily:"-moz-initial",color:"blue"}}>Set Password</h1>
+<div style={{marginLeft:"50px",width:"300px",height:"65px"}}>
     <TextField 
       id="username"
       name="username"
@@ -56,7 +71,7 @@ function SetPassword() {
       <br></br><br></br>
 </div>
 
-<div style={{marginTop:"10px",marginLeft:"50px",backgroundColor:"rgb(183, 242, 193)",width:"300px",height:"65px"}}>
+<div style={{marginTop:"10px",marginLeft:"50px",width:"300px",height:"65px"}}>
     <TextField 
       id="password"
       label="Password" 
@@ -68,10 +83,9 @@ function SetPassword() {
       onChange={formik.handleChange}
       error={formik.touched.password && Boolean(formik.errors.password)}
       helperText={formik.touched.password && formik.errors.password}/>   
-      <br></br><br></br>
-</div>
+      </div>
    
-<div style={{marginTop:"20px",marginLeft:"50px",backgroundColor:"rgb(183, 242, 193)",width:"300px",height:"65px"}}>
+<div style={{marginTop:"10px",marginLeft:"50px",width:"300px",height:"65px"}}>
     <TextField 
       id="confirmpassword"
       label="Confirm Password" 
@@ -86,7 +100,7 @@ function SetPassword() {
       />
       
 </div>
-<br></br><br></br>
+<br></br>
 <Button className="save-button" type="submit" variant="contained">
 Save
 </Button>

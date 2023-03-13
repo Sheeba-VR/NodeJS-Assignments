@@ -9,11 +9,52 @@ import FormLabel from '@mui/material/FormLabel';
 import { Button } from '@mui/material'
 import "./Registration.css";
 
+
+import { useNavigate } from "react-router-dom";
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+const validationSchema = yup.object({
+    phonenumber: yup
+   .string("Enter your phone number")
+   .required("Phone number is required")
+   .matches(
+     /^(?=.*[0-9])(?=.{10,})/,
+     "Must Contain 10 digit numbers only"),    
+   
+   email: yup
+   .string("Enter email Id")
+   .required("Email Id is required")
+   .matches(/^(?=.*[@])/,
+     "Enter a valid email Id"),    
+   
+ });
+   
+
+
+
 function Registration() {
+
+  const navigate = useNavigate();
+  const formik = useFormik({
+  initialValues: {
+    phonenumber: "",
+    email: "",
+    },
+  validationSchema: validationSchema,
+   onSubmit: (values) => {
+     navigate("/Setpassword");
+    //  alert(JSON.stringify(values, null, 2));
+     },
+     });
+
+
+
   return (
-      <Box><div className="registration-div"> 
-    <h1 style={{marginLeft:'30px'}}>Registration Form</h1>
+      <div className="registration-div"> 
+      <form onSubmit={formik.handleSubmit} >
+    <h1 style={{marginLeft:'30px',color:"blue"}}>Registration Form</h1>
     <div style={{marginLeft:"50px"}}>
+    
     <TextField
       required
       id="firstname"
@@ -32,15 +73,33 @@ function Registration() {
       required
       id="email"
       label="E mail"
+      name="email"
       placeholder="Enter email" 
-      variant="standard" /><br></br>
+      variant="standard" 
+      
+      value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.emailr && formik.errors.email}       
+      
+      /><br></br>
       <br></br>
      <TextField
           id="phonenumber"
+          name="phonenumber"
           label="Phone Number"
           type="number"
           placeholder="Enter phone number" 
-          variant="standard" /><br></br>
+          variant="standard" 
+          
+
+          value={formik.values.phonenumber}
+          onChange={formik.handleChange}
+          error={formik.touched.phonenumber && Boolean(formik.errors.phonenumber)}
+          helperText={formik.touched.phonenumber && formik.errors.phonenumber}       
+          
+          
+          /><br></br>
               <br></br>
      <TextField
           id="age"
@@ -71,13 +130,15 @@ function Registration() {
           defaultValue="Default Value"
         />      <br></br>
          <br></br>      
-         <Button className="reg-button" variant="contained" href={"/Setpassword"}>
+         {/* <Button className="reg-button" variant="contained" href={"/Setpassword"}> */}
+         <Button className="reg-button" type="submit" variant="contained">
         Submit
       </Button>
       </div>
-    </div>
-    </Box>
-    
+      </form>
+      </div>
+      
+        
   )
 }
 
